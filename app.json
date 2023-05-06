@@ -1,0 +1,8 @@
+{
+    "name": "techblog",
+    "description": "A sample Node.js app using Express 4",
+    "repository": "",
+    "logo": "",
+    "keywords": ["node", "express", "heroku"],
+    "image": ""
+  }  

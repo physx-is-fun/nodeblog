@@ -1,0 +1,350 @@
+<section class="section single-wrapper">
+	<div class="container">
+		{{> messages}}
+		<input type="hidden" name="_csrf" value="{{csrfToken}}">		
+		<div class="row">
+			<div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
+				<div class="page-wrapper">
+					
+					<div class="blog-top clearfix" data-aos="fade-right">
+						<h4 class="pull-left">Recent posts</h4>
+					</div><!-- end blog-top -->
+					
+					{{# if latestPosts.length }}
+					
+						<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-aos="zoom-in">
+							<ol class="carousel-indicators">
+								{{#each latestPosts}}
+									{{#if @first}}
+										<li data-target="#carouselExampleIndicators" data-slide-to="{{@index}}" class="active"></li>
+									{{else}}
+										<li data-target="#carouselExampleIndicators" data-slide-to="{{@index}}"></li>
+									{{/if}}
+								{{/each}}
+								<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+									<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+									<span class="sr-only">Previous</span>
+								</a>
+								<a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+									<span class="carousel-control-next-icon" aria-hidden="true"></span>
+									<span class="sr-only">Next</span>
+								</a>
+							</ol>
+							<div class="carousel-inner">
+								{{#each latestPosts}}
+									{{#if @first}}
+										<div class="carousel-item active">
+									{{else}}
+										<div class="carousel-item">
+									{{/if}}
+										<a href="/posts/{{id}}">
+											<img src="{{post_image}}" alt="" class="img-fluid">
+											<div class="carousel-caption">
+												<h3>{{title}}</h3>
+												<br>
+											</div>
+										</a>
+									</div>
+								{{/each}}
+							</div>
+						</div>
+					
+					{{/if}}
+
+					<br>
+					<br>
+					
+					<div class="blog-top clearfix" data-aos="fade-right">
+						<h4 class="pull-left">Headings</h4>
+					</div><!-- end blog-top -->
+					<div class="blog-grid-system">
+						<div class="row">
+							<div class="col-md-6" data-aos="zoom-in">
+								<div class="blog-box">
+									<div class="post-media">
+										<a href="#" title="">
+											<img src="/upload/headingvr.jpg" alt="" class="img-fluid">
+											<div class="hovereffect">
+												<span></span>
+											</div><!-- end hover -->
+										</a>
+									</div><!-- end media -->
+									<div class="blog-meta big-meta">
+										<h4><a style="color: #111111;" href="/posts?heading=5f369566489be321bcd72ffe" title="">VR</a></h4>
+										<p>Virtual reality (VR) is a simulated experience that can be similar to or completely different from the real world.</p>
+									</div><!-- end meta -->
+								</div><!-- end blog-box -->
+							</div><!-- end col -->
+
+							<div class="col-md-6" data-aos="zoom-in">
+								<div class="blog-box">
+									<div class="post-media">
+										<a href="#" title="">
+											<img src="/upload/headingsmartphone.jpg" alt="" class="img-fluid">
+											<div class="hovereffect">
+												<span></span>
+											</div><!-- end hover -->
+										</a>
+									</div><!-- end media -->
+									<div class="blog-meta big-meta">
+										<h4><a style="color: #111111;" href="/posts?heading=5f369596489be321bcd72fff" title="">Smartphone</a></h4>
+										<p>A smartphone is a mobile device that combines cellular and mobile computing functions into one unit.</p>
+									</div><!-- end meta -->
+								</div><!-- end blog-box -->
+							</div><!-- end col -->
+
+							<div class="col-md-6" data-aos="zoom-in">
+								<div class="blog-box">
+									<div class="post-media">
+										<a href="#" title="">
+											<img src="/upload/headingtablet.jpg" alt="" class="img-fluid">
+											<div class="hovereffect">
+												<span></span>
+											</div><!-- end hover -->
+										</a>
+									</div><!-- end media -->
+									<div class="blog-meta big-meta">
+										<h4><a style="color: #111111;" href="/posts?heading=5f3695a0489be321bcd73000" title="">Tablet</a></h4>
+										<p>A tablet computer is a mobile device, typically with a mobile operating system and touchscreen display processing circuitry, and a rechargeable battery in a single, thin and flat package.</p>
+									</div><!-- end meta -->
+								</div><!-- end blog-box -->
+							</div><!-- end col -->
+
+							<div class="col-md-6" data-aos="zoom-in">
+								<div class="blog-box">
+									<div class="post-media">
+										<a href="#" title="">
+											<img src="/upload/headingmobile.jpg" alt="" class="img-fluid">
+											<div class="hovereffect">
+												<span></span>
+											</div><!-- end hover -->
+										</a>
+									</div><!-- end media -->
+									<div class="blog-meta big-meta">
+										<h4><a style="color: #111111;" href="/posts?heading=5f3695c6489be321bcd73001" title="">Mobile phone</a></h4>
+										<p>A mobile phone is a portable telephone that can make and receive calls over a radio frequency link while the user is moving within a telephone service area.</p>
+									</div><!-- end meta -->
+								</div><!-- end blog-box -->
+							</div><!-- end col -->
+
+							<div class="col-md-6" data-aos="zoom-in">
+								<div class="blog-box">
+									<div class="post-media">
+										<a href="#" title="">
+											<img src="/upload/headingnotebook.jpg" alt="" class="img-fluid">
+											<div class="hovereffect">
+												<span></span>
+											</div><!-- end hover -->
+										</a>
+									</div><!-- end media -->
+									<div class="blog-meta big-meta">
+										<h4><a style="color: #111111;" href="/posts?heading=5f3695cf489be321bcd73002" title="">Notebook</a></h4>
+										<p>A notebook is a small, portable personal computer with a "clamshell" form factor, typically having a thin LED computer screen mounted on the inside of the upper lid of the clamshell and an alphanumeric keyboard on the inside of the lower lid.</p>
+									</div><!-- end meta -->
+								</div><!-- end blog-box -->
+							</div><!-- end col -->
+							
+							<div class="col-md-6" data-aos="zoom-in">
+								<div class="blog-box">
+									<div class="post-media">
+										<a href="#" title="">
+											<img src="/upload/headingdesktop.jpg" alt="" class="img-fluid">
+											<div class="hovereffect">
+												<span></span>
+											</div><!-- end hover -->
+										</a>
+									</div><!-- end media -->
+									<div class="blog-meta big-meta">
+										<h4><a style="color: #111111;" href="/posts?heading=5f3695d7489be321bcd73003" title="">Desktop</a></h4>
+										<p>A desktop computer is a personal computer designed for regular use at a single location on or near a desk or table due to its size and power requirements.</p>
+									</div><!-- end meta -->
+								</div><!-- end blog-box -->
+							</div><!-- end col -->
+
+							<div class="col-md-6" data-aos="zoom-in">
+								<div class="blog-box">
+									<div class="post-media">
+										<a href="#" title="">
+											<img src="/upload/headingaccessories.jpg" alt="" class="img-fluid">
+											<div class="hovereffect">
+												<span></span>
+											</div><!-- end hover -->
+										</a>
+									</div><!-- end media -->
+									<div class="blog-meta big-meta">
+										<h4><a style="color: #111111;" href="/posts?heading=5f3695e1489be321bcd73004" title="">Accessory</a></h4>
+										<p>The computer accessory or peripheral device is ancillary device used to put information into and get information out of the computer.</p>
+									</div><!-- end meta -->
+								</div><!-- end blog-box -->
+							</div><!-- end col -->
+
+							<div class="col-md-6" data-aos="zoom-in">
+								<div class="blog-box">
+									<div class="post-media">
+										<a href="#" title="">
+											<img src="/upload/headingapplication.jpg" alt="" class="img-fluid">
+											<div class="hovereffect">
+												<span></span>
+											</div><!-- end hover -->
+										</a>
+									</div><!-- end media -->
+									<div class="blog-meta big-meta">
+										<h4><a style="color: #111111;" href="/posts?heading=5f37b94bea50c50f04a54ce4" title="">Applications</a></h4>
+										<p>Application software (app for short) is a program or group of programs designed for end users.</p>
+									</div><!-- end meta -->
+								</div><!-- end blog-box -->
+							</div><!-- end col -->
+
+							<div class="col-md-6" data-aos="zoom-in">
+								<div class="blog-box">
+									<div class="post-media">
+										<a href="#" title="">
+											<img src="/upload/headingother.jpg" alt="" class="img-fluid">
+											<div class="hovereffect">
+												<span></span>
+											</div><!-- end hover -->
+										</a>
+									</div><!-- end media -->
+									<div class="blog-meta big-meta">
+										<h4><a style="color: #111111;" href="/posts?heading=5f3d632b0aeb920be8f6a84b" title="">Other</a></h4>
+										<p>Unspecified post.</p>
+									</div><!-- end meta -->
+								</div><!-- end blog-box -->
+							</div><!-- end col -->
+							
+						</div><!-- end row -->
+												
+					</div><!-- end blog-grid-system -->
+
+					<div class="row" data-aos="fade-up">
+						<div class="col-lg-12">
+							<div class="banner-spot clearfix">
+								<div class="banner-img">
+									<img src="/upload/banner_01.jpg" alt="" class="img-fluid">
+								</div><!-- end banner-img -->
+							</div><!-- end banner -->
+						</div><!-- end col -->
+					</div><!-- end row -->
+
+					<hr class="invis1">
+					
+				</div><!-- end page-wrapper -->
+				
+				<div class="page-wrapper">
+					<div class="blog-top clearfix" data-aos="fade-right">
+						<h4 class="pull-left">Categories</h4>
+					</div><!-- end blog-top -->
+
+					<div class="blog-grid-system">
+						<div class="row">
+							<div class="col-md-6" data-aos="zoom-in">
+								<div class="blog-box">
+									<div class="post-media">
+										<a href="#" title="">
+											<img src="/upload/categorynews.jpg" alt="" class="img-fluid">
+											<div class="hovereffect">
+												<span></span>
+											</div><!-- end hover -->
+										</a>
+									</div><!-- end media -->
+									<div class="blog-meta big-meta">
+										<h4><a style="color: #111111;" href="/posts?category=5f366321c7f2fd2760cfb2b5" title="">News</a></h4>
+										<p>Current news, the latest products and technologies.</p>
+									</div><!-- end meta -->
+								</div><!-- end blog-box -->
+							</div><!-- end col -->
+
+							<div class="col-md-6" data-aos="zoom-in">
+								<div class="blog-box">
+									<div class="post-media">
+										<a href="#" title="">
+											<img src="/upload/categorytest.jpg" alt="" class="img-fluid">
+											<div class="hovereffect">
+												<span></span>
+											</div><!-- end hover -->
+										</a>
+									</div><!-- end media -->
+									<div class="blog-meta big-meta">
+										<h4><a style="color: #111111;" href="/posts?category=5f3665a4bca96811a8f1f31a" title="">Test</a></h4>
+										<p>In our tests, we thoroughly examine one or more products, with measurements, diagrams, comparisons and evaluations.</p>
+									</div><!-- end meta -->
+								</div><!-- end blog-box -->
+							</div><!-- end col -->
+
+							<div class="col-md-6" data-aos="zoom-in">
+								<div class="blog-box">
+									<div class="post-media">
+										<a href="#" title="">
+											<img src="/upload/categoryblogentry.jpg" alt="" class="img-fluid">
+											<div class="hovereffect">
+												<span></span>
+											</div><!-- end hover -->
+										</a>
+									</div><!-- end media -->
+									<div class="blog-meta big-meta">
+										<h4><a style="color: #111111;" href="/posts?category=5f3664fcbca96811a8f1f317" title="">Blog entry</a></h4>
+										<p>We write in a more casual style on a particular topic.</p>
+									</div><!-- end meta -->
+								</div><!-- end blog-box -->
+							</div><!-- end col -->
+
+							<div class="col-md-6" data-aos="zoom-in">
+								<div class="blog-box">
+									<div class="post-media">
+										<a href="#" title="">
+											<img src="/upload/categorypresentation.jpg" alt="" class="img-fluid">
+											<div class="hovereffect">
+												<span></span>
+											</div><!-- end hover -->
+										</a>
+									</div><!-- end media -->
+									<div class="blog-meta big-meta">
+										<h4><a style="color: #111111;" href="/posts?category=5f36650cbca96811a8f1f318" title="">Presentation</a></h4>
+										<p>A short tour of one or more, presentation of its main features.</p>
+									</div><!-- end meta -->
+								</div><!-- end blog-box -->
+							</div><!-- end col -->
+
+							<div class="col-md-6" data-aos="zoom-in">
+								<div class="blog-box">
+									<div class="post-media">
+										<a href="#" title="">
+											<img src="/upload/categoryanalysis.jpg" alt="" class="img-fluid">
+											<div class="hovereffect">
+												<span></span>
+											</div><!-- end hover -->
+										</a>
+									</div><!-- end media -->
+									<div class="blog-meta big-meta">
+										<h4><a style="color: #111111;" href="/posts?category=5f366515bca96811a8f1f319" title="">Analysis</a></h4>
+										<p>In-depth analysis covering even the smallest technical details.</p>
+									</div><!-- end meta -->
+								</div><!-- end blog-box -->
+							</div><!-- end col -->
+						</div><!-- end row -->
+						
+					</div><!-- end blog-grid-system -->
+					
+					<div class="row" data-aos="fade-up">
+						<div class="col-lg-12">
+							<div class="banner-spot clearfix">
+								<div class="banner-img">
+									<img src="/upload/banner_01.jpg" alt="" class="img-fluid">
+								</div><!-- end banner-img -->
+							</div><!-- end banner -->
+						</div><!-- end col -->
+					</div><!-- end row -->
+					
+				</div><!-- end page-wrapper -->
+				
+			</div><!-- end col -->
+			
+			{{> sidebar}}
+
+		</div><!-- end row -->
+	</div><!-- end container -->
+</section>
+
+<!-- Footer -->
+
+{{> footer}}

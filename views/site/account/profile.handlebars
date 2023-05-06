@@ -1,0 +1,237 @@
+<section class="section single-wrapper">
+	<div class="container">
+		<div class="row align-items-center">
+			<div class="col-12">
+				<div class="row">
+					<div class="col-md-4 offset-md-4 text-center">
+						<div class="section-header text-center">
+							<h2 class="title">Profile information</h2>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="wide-form col-md-8">
+						{{> messages}}
+						<input type="hidden" name="_csrf" value="{{csrfToken}}">
+					</div>
+				</div>
+				<div class="row">
+					<div class="wide-form col-md-8">
+						<form action="/account/profile" method="POST" onsubmit="requestHandler()">
+							<div class="form-group">
+								<div class="input-group">                
+									<span class="input-group-addon" id="basic-addon1"><span class="fa fa-user"></span></span>
+									<input value="{{ user.username }}" autocomplete class="form-control" id="name" name="name" type="text" placeholder="Name" data-validation-required-message="Please enter your name." disabled>
+								</div>
+							</div>
+							<fieldset class="form-group">
+							<div class="row">
+							  <div class="col-form-label col-sm-2 pt-0"><strong>Gender</strong></div>
+							  <div class="col-sm-10">
+								<div class="form-check">
+								  <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="male" {{checked user.gender "male"}}>
+								  <label class="form-check-label" for="gridRadios1">
+									male
+								  </label>
+								</div>
+								<div class="form-check">
+								  <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="female" {{checked user.gender "female"}}>
+								  <label class="form-check-label" for="gridRadios2">
+									female
+								  </label>
+								</div>
+								<div class="form-check disabled">
+								  <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="other" {{checked user.gender "other"}}>
+								  <label class="form-check-label" for="gridRadios3">
+									other
+								  </label>
+								</div>
+							  </div>
+							</div>
+						  </fieldset>
+						  <div class="form-group">
+							<div class="input-group">                
+								<span class="input-group-addon" id="basic-addon1"><span class="fa fa-map-marker"></span></span>
+								<input value="{{ user.localization }}" autocomplete class="form-control" id="localization" name="localization" type="text" placeholder="Localization" data-validation-required-message="Please enter your Localization.">
+							</div>
+						  </div>
+						  <fieldset class="form-group">
+							<div class="row">
+							  <div class="col-form-label col-sm-2 pt-0"><strong>Picture</strong></div>
+							  <div class="col-sm-10">
+								{{#if user.picture}}
+									<img src="{{user.picture}}" width="100" height="100" style="border-radius: 50%;">
+								{{else}}
+									<img src="{{#gravatar user.email user.username size="100"}}{{/gravatar}}">
+								{{/if}}
+							  </div>
+							</div>
+						  </fieldset>
+						  <div class="form-group text-left">
+							<input type="checkbox" required="required"> 
+							I accept the <a href="#">terms of conditions</a>, the <a href="#">privacy policy</a> and the <a href="#">cookie policy</a>. 
+						  </div>
+						  <div class="form-group text-left">
+							<div class="btn-group">
+								<button type="submit" class="btn btn-success submit" onclick="return confirm('Do you wish to update your profile?');">
+								  Submit
+								</button>
+								<button type="reset" class="btn btn-danger submit">
+								  Reset
+								</button>
+								<input type="hidden" name="path" value="account">
+							</div>
+						  </div>
+						</form>
+					</div>
+				</div>	
+				{{#if user.emailVerified}}
+				<div class="row text-center sm-padding">
+					<div class="col-md-4 offset-md-4">
+						<div class="section-header">
+							<br>
+							<br>
+							<h2 class="title">Change email</h2>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="wide-form col-md-8">
+						<form action="/account/changeemail" method="POST" onsubmit="requestHandler()">
+							<div class="form-group">
+								<div class="input-group">
+									<span class="input-group-addon" id="basic-addon1"><span class="fa fa-envelope"></span></span>
+									<input autocomplete class="form-control" id="email" name="email" type="email" placeholder=" New email *" required="required" data-validation-required-message="Please enter your email." onChange="onChangeEmail()">
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="input-group">
+									<span class="input-group-addon" id="basic-addon1"><span class="fa fa-envelope"></span></span>
+									<input autocomplete class="form-control" id="confirmEmail" name="confirmEmail" type="email" placeholder="New email again *" required="required" data-validation-required-message="Please reenter your email." onChange="onChangeEmail()">
+								</div>
+							</div>
+						  <div class="form-group text-left">
+							<input type="checkbox" required="required"> 
+							I accept the <a href="#">terms of conditions</a>, the <a href="#">privacy policy</a> and the <a href="#">cookie policy</a>. 
+						  </div>
+						  <div class="form-group text-left">
+							<div class="btn-group">
+								<button type="submit" class="btn btn-success submit" onclick="return confirm('Do you wish to change your email address?');">
+								  Submit
+								</button>
+								<input type="hidden" name="path" value="account">
+							</div>
+						  </div>
+						</form>
+					</div>
+				</div>
+				<div class="row text-center sm-padding">
+					<div class="col-md-4 offset-md-4">
+						<div class="section-header">
+							<br>
+							<br>
+							<h2 class="title">Change password</h2>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="wide-form col-md-8">
+						<form action="/account/changepassword" method="POST" onsubmit="requestHandler()">
+							<div class="form-group">
+								<div class="input-group">
+									<span class="input-group-addon" id="basic-addon1"><span class="fa fa-lock"></span></span>
+									<input autocomplete class="form-control" id="password" name="password" type="password" placeholder="New password *" required="required" data-validation-required-message="Please enter your password." pattern="(?=.*?[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*?[#?!@$%^&*-]).{5,25}" title="Must contain at least 1 number, one upper case letter, 1 lower case letter, 1 special character, and must between 5-25 characters"  onChange="onChangePassword()">
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="input-group">
+									<span class="input-group-addon" id="basic-addon1"><span class="fa fa-lock"></span></span>
+									<input autocomplete class="form-control" id="confirmPassword" name="confirmPassword" type="password" placeholder="New password again *" required="required" data-validation-required-message="Please reenter your password." onChange="onChangePassword()">
+								</div>
+							</div>
+						  <div class="form-group text-left">
+							<input type="checkbox" required="required"> 
+							I accept the <a href="#">terms of conditions</a>, the <a href="#">privacy policy</a> and the <a href="#">cookie policy</a>. 
+						  </div>
+						  <div class="form-group text-left">
+							<div class="btn-group">
+								<button type="submit" class="btn btn-success submit" onclick="return confirm('Do you wish to change your password?');">
+								  Submit
+								</button>
+								<input type="hidden" name="path" value="account">
+							</div>
+						  </div>
+						</form>
+					</div>
+				</div>
+				{{/if}}
+				<div class="row text-center sm-padding">
+					<div class="col-md-4 offset-md-4">
+						<div class="section-header">
+							<br>
+							<br>
+							<h2 class="title">Account linking</h2>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="wide-form col-md-8">
+						<div class="form-box">
+							<div class="form-group text-left">
+								{{#if user.email}}
+									<a class="text-danger" href="/account/unlink/local">Unlink your local account</a>
+									{{#if user.emailVerified}}
+									{{else}}
+										<div class="pull-right text-danger">
+											Email is not verified!
+										</div>
+									{{/if}}
+								{{else}}
+									<a href="/auth/local">Link your local account</a>
+								{{/if}}
+							</div>
+							<div class="form-group text-left">
+								{{#if user.google}}
+									<a href="/account/unlink/google" class="text-danger">Unlink your Google account</a>
+								{{else}}
+									<a href="/auth/google">Link your Google account</a>
+								{{/if}}
+							</div>
+							<div class="form-group text-left">
+								{{#if user.facebook}}
+									<a href="/account/unlink/facebook" class="text-danger">Unlink your Facebook account</a>
+								{{else}}
+									<a href="/auth/facebook">Link your Facebook account</a>
+								{{/if}}
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row text-center sm-padding">
+					<div class="col-md-4 offset-md-4">
+						<div class="section-header">
+							<br>
+							<br>
+							<h2 class="title">Delete account</h2>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="wide-form col-md-8">
+						<div class="form-box">
+							<div class="form-group text-left text-danger">
+							You can delete your account, but keep in mind this action is irreversible.
+						</div>
+						<div class="form-group text-left">
+							<div class="btn-group">
+								<button class="btn btn-danger" onclick="deleteProfile()">
+								Delete account
+								</button>
+							</div>
+						</div>
+					</div
+				</div>	
+			</div>
+		</div>
+	</div>
+</section>

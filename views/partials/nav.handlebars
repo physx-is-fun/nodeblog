@@ -1,0 +1,115 @@
+<header class="tech-header header">
+	<div class="container-fluid">
+		<nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse flex-wrap">
+			<div class="form-inline">
+				<button class="navbar-toggler order-1 order-xs-1 order-md-4" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<a class="navbar-brand" href="/" alt="">&nbsp; Tech<strong>blog</strong></a>
+			</div>
+
+			<div class="collapse navbar-collapse" id="navbarCollapse">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item dropdown has-submenu">
+						<a class="nav-link dropdown-toggle" href="#" id="dropdown02" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Headings</a>
+						<ul class="dropdown-menu" aria-labelledby="dropdown02">
+							{{# if headings.length }}
+								{{# each headings }}
+									<li><a class="dropdown-item" href="/posts?heading={{id}}">{{name}}</a></li>
+								{{/each}}
+							{{/if}}
+						</ul>
+					</li>
+					<li class="nav-item dropdown has-submenu">
+						<a class="nav-link dropdown-toggle" href="#" id="dropdown02" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categories</a>
+						<ul class="dropdown-menu" aria-labelledby="dropdown02">
+							{{# if categories.length }}
+								{{# each categories }}
+									<li><a class="dropdown-item" href="/posts?category={{id}}">{{name}}</a></li>
+								{{/each}}
+							{{/if}}
+						</ul>
+					</li>
+					
+					<li class="nav-item dropdown has-submenu">
+						<a class="nav-link" href="/posts/">All post</a>
+					</li>
+					
+					{{# if user }}
+					
+					<li class="nav-item dropdown has-submenu">
+						<a class="nav-link" href="/posts/create">Create post</a>
+					</li>
+					
+					{{# if user.isAdmin }}
+					
+					<li class="nav-item dropdown has-submenu">
+						<a class="nav-link dropdown-toggle" href="#" id="dropdown02" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Admin</a>
+						<ul class="dropdown-menu" aria-labelledby="dropdown02">
+							<!--
+							<li><a class="dropdown-item" href="/admin">Main</a></li>
+							-->
+							<li><a class="dropdown-item" href="/admin/status">Status</a></li>
+							<li><a class="dropdown-item" href="/admin/posts">Posts</a></li>
+							<li><a class="dropdown-item" href="/admin/tags">Tags</a></li>
+							<li><a class="dropdown-item" href="/admin/categories">Categories</a></li>
+							<li><a class="dropdown-item" href="/admin/headings">Headings</a></li>
+						</ul>
+					</li>
+					
+					{{/if}}
+										
+					{{/if}}
+					
+					<li class="nav-item">
+						<a class="nav-link" href="/contact">Contact Us</a>
+					</li>	
+				</ul>
+				<ul class="navbar-nav">
+					{{# if user }}
+					<li class="nav-item dropdown has-submenu">
+						<a class="nav-link dropdown-toggle" href="#" id="dropdown02" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							<i class="fa fa-user"></i>
+							{{#if user.username}}
+								{{user.username}}
+							{{else if user.email}}
+							{{user.email}}
+							{{/if}}
+						</a>
+						<div class="dropdown-menu dropdown-menu-right"aria-labelledby="dropdown02">
+							<a href="/account/profile" class="dropdown-item">
+								Profile
+							</a>
+							<a href="/account/posts" class="dropdown-item">
+								My posts
+							</a>
+							<a href="/account/tags" class="dropdown-item">
+								My tags
+							</a>
+							<a href="/account/categories" class="dropdown-item">
+								My categories
+							</a>
+							<a href="/account/headings" class="dropdown-item">
+								My headings
+							</a>
+							<div class="dropdown-divider"></div>
+							<a href="/account/logout" class="dropdown-item">
+								Logout
+							</a>
+						</div>
+					</li>
+					{{else}}
+					<li class="nav-item">
+						<a class="nav-link" href="/register">Register</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/login">Login</a>
+					</li>
+					{{/if}}
+				</ul>
+				<!-- Material form grid -->
+			</div>
+		</nav>
+
+	</div><!-- end container-fluid -->
+</header><!-- end market-header -->

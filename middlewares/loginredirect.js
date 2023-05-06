@@ -1,0 +1,1 @@
+exports.loginRedirect = (req, res, next) => { res.redirect(req.session.returnTo || '/') }

@@ -1,0 +1,23 @@
+<div class="centerpage">
+	<section class="section" data-aos="fade-down">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-lg-6">
+					<div class="page-wrapper animated fadeInDown">
+						<div class="notfound">   
+							<h2>{{errorCode}}</h2>
+							<h3>{{errorMessage}}</h3>
+							<br>
+							{{> messages}}
+							<input type="hidden" name="_csrf" value="{{csrfToken}}">
+							<br>
+							<div class="text-center">
+								<a href="/" class="btn btn-primary">Back to Home</a>
+							</div><!-- end text-center -->
+						</div><!-- end notfound -->
+					</div><!-- end page-wrapper -->
+				</div><!-- end col -->
+			</div><!-- end row -->
+		</div><!-- end container -->
+	</section><!-- end section -->
+</div><!-- end centerpage -->
